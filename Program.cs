@@ -30,4 +30,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseCors(options => options
+    .WithOrigins(new[] { "*" }) // Reemplaza "*" con los orígenes permitidos
+    .WithMethods(new[] { "GET", "POST", "PUT", "DELETE" }) // Especifica los métodos HTTP permitidos
+    .AllowAnyHeader()); // Permite cualquier encabezado
+
 app.Run();

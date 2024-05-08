@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 namespace api_inges_dev.Controllers;
 
 [Route("api/[controller]")]
+// [Produces("application/json")]
 [ApiController]
 public class RegistroController : ControllerBase
 {
@@ -18,9 +19,10 @@ public class RegistroController : ControllerBase
     }
 
     [HttpGet("tecnologias")]
-    public IEnumerable<Technologies> Tecnologias()
+    public ObjectResult Tecnologias()
     {
-        return contex.technologies.ToList();
+        var res = contex.technologies.ToList();
+        return Ok(res);
     }
     [HttpPost("registrar")]
     public Registro? registrar(Registro registro)
