@@ -17,14 +17,18 @@ public class RegistroController : ControllerBase
         this.contex = contex;
     }
 
-    [HttpGet(Name = "tecnologias")]
+    [HttpGet("tecnologias")]
     public IEnumerable<Technologies> Tecnologias()
     {
         return contex.technologies.ToList();
     }
-    [HttpGet(Name = "clientes")]
-    public IEnumerable<Technologies> Clinetes()
+    [HttpPost("registrar")]
+    public Registro? registrar(Registro registro)
     {
-        return contex.technologies.ToList();
+        contex.Registers.Add(registro);
+        contex.SaveChanges();
+
+
+        return contex.Registers.OrderBy(r => r.id).Last();
     }
 }
