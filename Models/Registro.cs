@@ -8,8 +8,9 @@ namespace api_inges_dev.Models
         public required string telefono { get; set; }
         public required string email { get; set; }
         public required string profesion { get; set; }
-        public required int experiencia { get; set; }
+        public required byte experiencia { get; set; }
         public required int fk_technology { get; set; }
+        public required int? score { get; set; }
         
     }
 }

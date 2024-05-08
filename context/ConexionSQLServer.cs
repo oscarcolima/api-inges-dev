@@ -15,7 +15,9 @@ namespace api_inges_dev.Context
 
         public DbSet<Technologies> technologies { get; set; }
         public DbSet<Registro> Registers { get; set; }
-        
+        public DbSet<Questions> Questions { get; set; }
+        public DbSet<Answers> Answers { get; set; }
+
 
 
     }
