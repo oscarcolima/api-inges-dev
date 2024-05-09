@@ -63,10 +63,10 @@ public class TestController : ControllerBase
 
 
     [HttpPost("calificar")]
-    public Object calificar(int usuario, List<QuestionsAnswers> respuestas)
+    public ObjectResult calificar(int usuario, List<QuestionsAnswers> respuestas)
     {
         int calificar = 0;
-        int coret = 0;
+        byte coret = 0;
 
         foreach (var pre in respuestas)
         {
@@ -79,9 +79,7 @@ public class TestController : ControllerBase
 
         if (calificar < 0) calificar = 0;
 
-        var usuairio = contex.Registers.FirstOrDefault(x => x.id == usuario);
-        usuairio!.score = calificar;
-        contex.SaveChanges();
+
 
         string level = "";
 
@@ -98,11 +96,13 @@ public class TestController : ControllerBase
         //     level = "A2 o B1";
         // }
 
-        return new
-        {
-            calificacion = calificar,
-            asiertos = coret,
-            nivel = level,
-        };
+        var usuairio = contex.Registers.FirstOrDefault(x => x.id == usuario);
+        usuairio!.score = calificar;
+        usuairio!.correct_answers = coret;
+        usuairio!.level = level;
+        contex.SaveChanges();
+
+        return Created();
+
     }
 }
