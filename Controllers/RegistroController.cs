@@ -1,5 +1,6 @@
 using api_inges_dev.Context;
 using api_inges_dev.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
@@ -32,5 +33,14 @@ public class RegistroController : ControllerBase
 
 
         return contex.Registers.OrderBy(r => r.id).Last();
+    }
+
+    [HttpGet("Getlevel")]
+    public Registro getLevel(int id)
+    {
+
+        var res = contex.Registers.FirstOrDefault(r => r.id == id);
+
+        return res;
     }
 }
