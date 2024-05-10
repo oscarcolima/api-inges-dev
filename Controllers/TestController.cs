@@ -22,23 +22,22 @@ public class TestController : ControllerBase
     public IEnumerable<QuestionsAnswers> getquestions()
     {
         List<QuestionsAnswers> respuestas = [];
-
-        var random = new Random(contex.Questions.ToList().Count);
         var questions = contex.Questions.ToList();
+        var random = new Random();
         var randomItems = questions
-            .OrderBy(x => random.Next())
+            .OrderBy(x => random.Next(0, questions.Count))
             .Take(25)
             .Select(x => x);
+
 
         foreach (Questions item in randomItems)
         {
             var respuest = contex.Answers
                 .Where(x => x.fk_question == item.id)
                 .ToList();
-            random = new Random(respuest.Count);
 
             var randomRespuesta = respuest
-                .OrderBy(x => random.Next())
+                .OrderBy(x => random.Next(0, respuest.Count))
                 .Select(x => x)
                 .ToList();
 
