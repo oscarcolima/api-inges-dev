@@ -25,4 +25,14 @@ public class PanelController : ControllerBase
         var res = contex.Registers.ToList();
         return Ok(res);
     }
+
+
+
+    [HttpPost("login")]
+    public ObjectResult Login([FromBody]Login login)
+    {
+        var res = contex.Registers.ToList();
+        return Ok(res);
+    }
 }
+
