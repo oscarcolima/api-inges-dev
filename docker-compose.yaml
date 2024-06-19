@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  tuapi:
+    container_name: Ingles_devs_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5015:80"
+    volumes:
+      - .:/App
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
