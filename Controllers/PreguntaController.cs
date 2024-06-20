@@ -26,6 +26,7 @@ public class PreguntaController : ControllerBase
         var questions = contex.Questions.Where(x => !x.eliminado).ToList();
 
 
+
         foreach (Questions item in questions)
         {
             var respuest = contex.Answers
@@ -99,6 +100,37 @@ public class PreguntaController : ControllerBase
         contex.SaveChanges();
 
         return Ok(question);
+
+    }
+
+    [HttpPost("crear")]
+    public ObjectResult crear(QuestionsAnswers question)
+    {
+
+        contex.Questions.Add(new Questions
+        {
+            question = question.question,
+            type = question.type,
+            eliminado = question.eliminado,
+            rightScore = question.rightScore,
+            wrongScore = question.wrongScore,
+            create_at = question.create_at,
+            update_at = question.update_at,
+        });
+
+        contex.SaveChanges();
+        var nuevo = contex.Questions.OrderBy(r => r.id).Last();
+
+
+        foreach (var respuesta in question.answers!)
+        {
+            respuesta.fk_question = nuevo.id;
+            var editarRespuesta = contex.Answers.Add(respuesta);
+        }
+
+        contex.SaveChanges();
+
+        return Ok(true);
 
     }
 
