@@ -16,6 +16,8 @@ namespace api_inges_dev.Models
         public required string type { get; set; }
         public byte rightScore { get; set; }
         public byte wrongScore { get; set; }
+        public required bool eliminado { get; set; }
+
         public DateTime create_at { get; set; }
         public DateTime update_at { get; set; }
 

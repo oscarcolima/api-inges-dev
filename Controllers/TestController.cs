@@ -24,7 +24,7 @@ public class TestController : ControllerBase
         List<QuestionsAnswers> respuestas = [];
         var questions = contex.Questions.ToList();
         var random = new Random();
-        var randomItems = questions
+        var randomItems = questions.Where(x => !x.eliminado)
             .OrderBy(x => random.Next(0, questions.Count))
             .Take(25)
             .Select(x => x);
@@ -46,6 +46,7 @@ public class TestController : ControllerBase
                 id = item.id,
                 question = item.question,
                 type = item.type,
+                eliminado=item.eliminado,
                 rightScore = item.rightScore,
                 wrongScore = item.wrongScore,
                 create_at = item.create_at,
