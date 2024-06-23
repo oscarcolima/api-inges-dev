@@ -33,3 +33,6 @@
 /home/tdtxle/Developer/Cositec/api_inges_dev/obj/Debug/net8.0/api_inges_dev.pdb
 /home/tdtxle/Developer/Cositec/api_inges_dev/obj/Debug/net8.0/api_inges_dev.genruntimeconfig.cache
 /home/tdtxle/Developer/Cositec/api_inges_dev/obj/Debug/net8.0/ref/api_inges_dev.dll
+/App/obj/Debug/net8.0/api_inges_dev.dll
+/App/obj/Debug/net8.0/refint/api_inges_dev.dll
+/App/obj/Debug/net8.0/api_inges_dev.pdb
