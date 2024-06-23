@@ -35,4 +35,6 @@ app.UseCors(options => options
     .WithMethods(new[] { "GET", "POST", "PUT", "DELETE" }) // Especifica los métodos HTTP permitidos
     .AllowAnyHeader()); // Permite cualquier encabezado
 
+
+app.Urls.Add("http://*:80"); // Configurar la aplicación para escuchar en el puerto 80
 app.Run();

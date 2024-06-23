@@ -22,14 +22,32 @@ public class PanelController : ControllerBase
     [HttpGet("getPanel")]
     public ObjectResult getpanel()
     {
-        var res = contex.Registers.ToList();
+        var res = contex.Registers.Where(x => !x.eliminado).ToList();
         return Ok(res);
     }
 
+    [HttpDelete("elimar")]
+
+    public ObjectResult eleiminar(int id)
+    {
+        var res = contex.Registers.FirstOrDefault(r => r.id == id);
+
+        /*   if (res == null)
+          {
+              return NoContent();
+          } */
+        res!.eliminado = true;
+
+        contex.Registers.Update(res);
+        contex.SaveChanges();
+
+        return Ok(res);
+
+    }
 
 
     [HttpPost("login")]
-    public ObjectResult Login([FromBody]Login login)
+    public ObjectResult Login([FromBody] Login login)
     {
         var res = contex.Registers.ToList();
         return Ok(res);
