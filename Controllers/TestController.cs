@@ -3,6 +3,11 @@ using api_inges_dev.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace api_inges_dev.Controllers;
 
@@ -46,7 +51,7 @@ public class TestController : ControllerBase
                 id = item.id,
                 question = item.question,
                 type = item.type,
-                eliminado=item.eliminado,
+                eliminado = item.eliminado,
                 rightScore = item.rightScore,
                 wrongScore = item.wrongScore,
                 create_at = item.create_at,
@@ -63,7 +68,7 @@ public class TestController : ControllerBase
 
 
     [HttpPost("calificar")]
-    public ObjectResult calificar(int usuario, List<QuestionsAnswers> respuestas)
+    public async Task<ObjectResult> calificar(int usuario, List<QuestionsAnswers> respuestas)
     {
         int calificar = 0;
         byte coret = 0;
@@ -101,6 +106,23 @@ public class TestController : ControllerBase
         usuairio!.correct_answers = coret;
         usuairio!.level = level;
         contex.SaveChanges();
+
+        var url = "https://hooks.zapier.com/hooks/catch/8944102/2ucbrwg/";
+        var json = JsonConvert.SerializeObject(usuairio);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+        Console.WriteLine(json);
+
+
+        using (var client = new HttpClient())
+        {
+            var response = await client.PostAsync(url, content);
+            string responseString = await response.Content.ReadAsStringAsync();
+
+            Console.WriteLine($"Status Code: {response.StatusCode}");
+            Console.WriteLine($"Response: {responseString}");
+        }
+
+
 
         return Created();
 

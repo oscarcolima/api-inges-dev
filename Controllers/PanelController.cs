@@ -50,6 +50,9 @@ public class PanelController : ControllerBase
     public ObjectResult Login([FromBody] Login login)
     {
         var res = contex.Registers.ToList();
+
+
+        
         return Ok(res);
     }
 }
