@@ -39,11 +39,11 @@ public class RegistroController : ControllerBase
 
         var user = contex.Registers.OrderBy(r => r.id).Last();
 
+       
         var url = "https://hooks.zapier.com/hooks/catch/8944102/2ucbrwg/";
-
-
         var json = JsonConvert.SerializeObject(user);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
+        Console.WriteLine(json);
 
 
         using (var client = new HttpClient())

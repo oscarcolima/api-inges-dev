@@ -108,8 +108,6 @@ public class TestController : ControllerBase
         contex.SaveChanges();
 
         var url = "https://hooks.zapier.com/hooks/catch/8944102/2ucbrwg/";
-
-
         var json = JsonConvert.SerializeObject(usuairio);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
         Console.WriteLine(json);
