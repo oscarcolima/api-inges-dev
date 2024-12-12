@@ -32,30 +32,55 @@ public class RegistroController : ControllerBase
         return Ok(res);
     }
     [HttpPost("registrar")]
-    public async Task<Registro?> registrar(Registro registro)
+    public Registro registrar(Registro registro)
     {
-        contex.Registers.Add(registro);
-        contex.SaveChanges();
+        
+        try
+        {
+            contex.Registers.Add(registro);
+            contex.SaveChanges();
+            var user = contex.Registers.OrderBy(r => r.id).Last();
+           
+            return user;
 
-        var user = contex.Registers.OrderBy(r => r.id).Last();
+        }
+        catch (Exception e)
+        {
+            
+            return new Registro() 
+            { 
+                correct_answers=0,
+                eliminado = false,
+                email = "",
+                experiencia = "",
+                fk_technology = 0,
+                id = 0,
+                level = "",
+                nombre_completo = e.Message,
+                profesion = "",
+                score = 0,
+                telefono = ""
+            };
 
        
-        var url = "https://hooks.zapier.com/hooks/catch/8944102/2ucbrwg/";
-        var json = JsonConvert.SerializeObject(user);
-        var content = new StringContent(json, Encoding.UTF8, "application/json");
-        Console.WriteLine(json);
-
-
-        using (var client = new HttpClient())
-        {
-            var response = await client.PostAsync(url, content);
-            string responseString = await response.Content.ReadAsStringAsync();
-
-            Console.WriteLine($"Status Code: {response.StatusCode}");
-            Console.WriteLine($"Response: {responseString}");
         }
 
-        return user;
+       
+        //var url = "https://hooks.zapier.com/hooks/catch/8944102/2ucbrwg/";
+        //var json = JsonConvert.SerializeObject(user);
+        //var content = new StringContent(json, Encoding.UTF8, "application/json");
+        //Console.WriteLine(json);
+
+
+        //using (var client = new HttpClient())
+        //{
+        //    var response = await client.PostAsync(url, content);
+        //    string responseString = await response.Content.ReadAsStringAsync();
+
+        //    Console.WriteLine($"Status Code: {response.StatusCode}");
+        //    Console.WriteLine($"Response: {responseString}");
+        //}
+
     }
 
     [HttpGet("Getlevel")]

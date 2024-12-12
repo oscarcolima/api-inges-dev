@@ -1,25 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "/home/tdtxle/Developer/Cositec/api_inges_dev/api_inges_dev.csproj": {}
+    "D:\\GitHub\\api-inges-dev\\api_inges_dev.csproj": {}
   },
   "projects": {
-    "/home/tdtxle/Developer/Cositec/api_inges_dev/api_inges_dev.csproj": {
+    "D:\\GitHub\\api-inges-dev\\api_inges_dev.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/tdtxle/Developer/Cositec/api_inges_dev/api_inges_dev.csproj",
+        "projectUniqueName": "D:\\GitHub\\api-inges-dev\\api_inges_dev.csproj",
         "projectName": "api_inges_dev",
-        "projectPath": "/home/tdtxle/Developer/Cositec/api_inges_dev/api_inges_dev.csproj",
-        "packagesPath": "/home/tdtxle/.nuget/packages/",
-        "outputPath": "/home/tdtxle/Developer/Cositec/api_inges_dev/obj/",
+        "projectPath": "D:\\GitHub\\api-inges-dev\\api_inges_dev.csproj",
+        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\api-inges-dev\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/tdtxle/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -32,15 +35,42 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -66,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/8.0.104/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

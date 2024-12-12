@@ -25,8 +25,6 @@ public class PreguntaController : ControllerBase
         List<QuestionsAnswers> respuestas = [];
         var questions = contex.Questions.Where(x => !x.eliminado).ToList();
 
-
-
         foreach (Questions item in questions)
         {
             var respuest = contex.Answers

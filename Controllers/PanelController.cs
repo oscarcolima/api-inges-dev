@@ -20,9 +20,12 @@ public class PanelController : ControllerBase
     }
 
     [HttpGet("getPanel")]
-    public ObjectResult getpanel()
+    public ObjectResult GetPanel()
     {
-        var res = contex.Registers.Where(x => !x.eliminado).ToList();
+        var res = contex.Registers
+            .Where(x => !x.eliminado)
+            .OrderByDescending(x => x.id) // Ordenar por Id en orden descendente
+            .ToList();
         return Ok(res);
     }
 
