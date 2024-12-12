@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("api_inges_dev")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6079920ba6be4f1e9ad50f67e190fdd285ce9f83")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a7d0c6d5b2ca9ce8b8cf85a7c256b69b40820ab")]
 [assembly: System.Reflection.AssemblyProductAttribute("api_inges_dev")]
 [assembly: System.Reflection.AssemblyTitleAttribute("api_inges_dev")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
